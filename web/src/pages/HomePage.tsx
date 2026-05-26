@@ -28,8 +28,9 @@ export function HomePage() {
       <section className="card">
         <h2>Get reminders</h2>
         <p>
-          pgh.st schedule lookup is great, but email and text reminders are currently unavailable
-          there. This site adds free evening-before reminders for trash, recycling, and yard waste.
+          Look up your trash, recycling, and yard waste schedule, then sign up for free email
+          reminders the evening before pickup. Built for Pittsburgh residents served by the
+          Department of Public Works.
         </p>
       </section>
     </>

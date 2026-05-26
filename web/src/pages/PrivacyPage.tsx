@@ -3,7 +3,7 @@ export function PrivacyPage() {
     <section className="card">
       <h2>Privacy</h2>
       <p>
-        PGH Pickup Reminders uses your email address and/or phone number only to send trash,
+        Pittsburgh Trash Reminders uses your email address and/or phone number only to send trash,
         recycling, and yard waste pickup reminders for the address you register.
       </p>
       <p>
@@ -16,8 +16,7 @@ export function PrivacyPage() {
         links in those emails.
       </p>
       <p>
-        Schedule data comes from public City of Pittsburgh collection information via the pgh.st
-        lookup service.
+        Schedule data comes from public City of Pittsburgh collection information.
       </p>
       <h3>Unsubscribe</h3>
       <ul>

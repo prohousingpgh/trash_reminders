@@ -6,7 +6,7 @@ export function Layout() {
       <header className="site-header">
         <h1>
           <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
-            PGH Pickup Reminders
+            Pittsburgh Trash Reminders
           </Link>
         </h1>
         <p>Trash, recycling, and yard waste schedules for Pittsburgh — with email &amp; text reminders.</p>
