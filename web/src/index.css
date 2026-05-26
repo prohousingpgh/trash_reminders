@@ -93,6 +93,8 @@ a {
 
 .search-form button,
 .subscribe-form button,
+.card form button,
+.account-sub-actions > button:not(.btn-secondary):not(.btn-danger),
 .btn {
   background: var(--accent);
   color: white;
@@ -106,12 +108,17 @@ a {
 
 .search-form button:hover,
 .subscribe-form button:hover,
+.card form button:hover,
+.account-sub-actions > button:not(.btn-secondary):not(.btn-danger):hover,
 .btn:hover {
   background: var(--accent-dark);
 }
 
 .search-form button:disabled,
-.subscribe-form button:disabled {
+.subscribe-form button:disabled,
+.card form button:disabled,
+.account-sub-actions > button:not(.btn-secondary):not(.btn-danger):disabled,
+.btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
