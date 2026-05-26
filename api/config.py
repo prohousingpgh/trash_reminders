@@ -31,6 +31,7 @@ SNS_ORIGINATION_NUMBER = os.environ.get("SNS_ORIGINATION_NUMBER", "")
 
 APP_BASE_URL = os.environ.get("APP_BASE_URL", "http://localhost:5174").rstrip("/")
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "")
+SESSION_COOKIE_NAME = os.environ.get("SESSION_COOKIE_NAME", "reminders_session")
 
 # Mailchimp (optional Pro-Housing Pittsburgh newsletter — separate from SES)
 MAILCHIMP_API_KEY = os.environ.get("MAILCHIMP_API_KEY", "")

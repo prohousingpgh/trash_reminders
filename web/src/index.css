@@ -232,6 +232,32 @@ a {
   vertical-align: middle;
 }
 
+.account-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.account-sub-card {
+  margin-bottom: 1rem;
+}
+
+.account-sub-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+a.btn {
+  text-decoration: none;
+  display: inline-block;
+}
+
 .alert-banner {
   background: var(--warning-bg);
   border: 1px solid var(--warning-border);

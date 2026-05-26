@@ -12,6 +12,7 @@ export function Layout() {
         <p>Trash, recycling, and yard waste schedules for Pittsburgh — with email &amp; text reminders.</p>
         <nav className="site-nav">
           <Link to="/">Look up schedule</Link>
+          <Link to="/account">My reminders</Link>
           <Link to="/privacy">Privacy</Link>
         </nav>
       </header>

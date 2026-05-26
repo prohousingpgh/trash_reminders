@@ -9,6 +9,7 @@ from pydantic import BaseModel, Field, model_validator
 from api import db
 from api.locate import fetch_locate
 from api.mailchimp import subscribe_to_newsletter
+from api.account_db import normalize_email
 from api.notifications import (
     normalize_phone,
     send_sms_opt_in,
@@ -86,7 +87,7 @@ async def create_subscription(
         regular_trash_pickup_day=body.regular_trash_pickup_day
         if body.regular_trash_pickup_day is not None
         else match.get("regular_trash_pickup_day"),
-        email=body.email.strip() if body.email else None,
+        email=normalize_email(body.email) if body.email else None,
         phone=phone,
         email_enabled=body.email_enabled,
         sms_enabled=body.sms_enabled,

@@ -23,6 +23,10 @@ export function PrivacyPage() {
       <ul>
         <li>Email: use the unsubscribe link in any reminder email.</li>
         <li>SMS: reply STOP to any reminder text. Reply START to resume.</li>
+        <li>
+          Manage all addresses: use <a href="/account">My reminders</a> to sign in with a one-time email
+          link.
+        </li>
       </ul>
     </section>
   )

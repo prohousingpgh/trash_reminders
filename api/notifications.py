@@ -159,6 +159,18 @@ def send_verification_email(sub: dict[str, Any]) -> bool:
     )
 
 
+def send_login_link_email(email: str, token: str) -> bool:
+    login_url = f"{APP_BASE_URL}/account/verify?token={token}"
+    html = f"""
+    <p>Sign in to manage your Pittsburgh pickup reminders:</p>
+    <p><a href="{login_url}">Open my reminders</a></p>
+    <p style="color:#666;font-size:12px;">
+      This link expires in one hour. If you did not request this, you can ignore this email.
+    </p>
+    """
+    return send_email(email, "Sign in to PGH Pickup Reminders", html)
+
+
 def send_sms_opt_in(sub: dict[str, Any]) -> bool:
     address = format_address(sub)
     body = (

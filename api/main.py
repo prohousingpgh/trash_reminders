@@ -11,6 +11,8 @@ from fastapi import APIRouter, Depends, FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 
 from api import db
+from api.account import router as account_router
+from api.account_db import init_account_tables
 from api.admin import router as admin_router
 from api.config import CORS_ORIGINS
 from api.geocode import router as geocode_router
@@ -36,6 +38,7 @@ scheduler = AsyncIOScheduler(timezone="America/New_York")
 async def lifespan(app):
     conn = db.get_connection()
     db.init_db(conn)
+    init_account_tables(conn)
     app.state.db = conn
 
     async def reminder_job():
@@ -145,6 +148,7 @@ def unsubscribe_api(
 app.include_router(geocode_router)
 app.include_router(locate_router)
 app.include_router(subscriptions_router)
+app.include_router(account_router)
 app.include_router(admin_router)
 app.include_router(webhooks_router)
 app.include_router(unsub_router)

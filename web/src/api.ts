@@ -1,7 +1,8 @@
-import type { LocateResponse, ServiceAlert, Subscription, AddressSuggestion } from './types'
+import type { LocateResponse, ServiceAlert, Subscription, AddressSuggestion, AccountSession } from './types'
 
 async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(path, {
+    credentials: 'include',
     headers: { 'Content-Type': 'application/json', ...init?.headers },
     ...init,
   })
@@ -103,4 +104,49 @@ export async function deleteAlert(adminPassword: string, alertId: string): Promi
     method: 'DELETE',
     headers: { 'X-Admin-Password': adminPassword },
   })
+}
+
+export async function requestAccountLogin(email: string): Promise<{ message: string }> {
+  return apiFetch('/api/account/login/request', {
+    method: 'POST',
+    body: JSON.stringify({ email }),
+  })
+}
+
+export async function verifyAccountLogin(token: string): Promise<{ authenticated: boolean; email: string }> {
+  return apiFetch('/api/account/login/verify', {
+    method: 'POST',
+    body: JSON.stringify({ token }),
+  })
+}
+
+export async function fetchAccountSession(): Promise<AccountSession> {
+  return apiFetch('/api/account/session')
+}
+
+export async function fetchAccountSubscriptions(): Promise<{
+  email: string
+  subscriptions: Subscription[]
+}> {
+  return apiFetch('/api/account/subscriptions')
+}
+
+export async function updateAccountSubscription(
+  subId: string,
+  updates: { holiday_only?: boolean; email_enabled?: boolean }
+): Promise<{ subscription: Subscription }> {
+  return apiFetch(`/api/account/subscriptions/${subId}`, {
+    method: 'PATCH',
+    body: JSON.stringify(updates),
+  })
+}
+
+export async function cancelAccountSubscription(
+  subId: string
+): Promise<{ subscription: Subscription; message: string }> {
+  return apiFetch(`/api/account/subscriptions/${subId}`, { method: 'DELETE' })
+}
+
+export async function logoutAccount(): Promise<{ message: string }> {
+  return apiFetch('/api/account/logout', { method: 'POST' })
 }

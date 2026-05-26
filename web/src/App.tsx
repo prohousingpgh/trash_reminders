@@ -1,5 +1,8 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
+import { AccountLoginPage } from './pages/AccountLoginPage'
+import { AccountPage } from './pages/AccountPage'
+import { AccountVerifyPage } from './pages/AccountVerifyPage'
 import { AdminAlertsPage } from './pages/AdminAlertsPage'
 import { HomePage } from './pages/HomePage'
 import { PrivacyPage } from './pages/PrivacyPage'
@@ -14,6 +17,9 @@ function App() {
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="schedule" element={<SchedulePage />} />
+          <Route path="account/login" element={<AccountLoginPage />} />
+          <Route path="account/verify" element={<AccountVerifyPage />} />
+          <Route path="account" element={<AccountPage />} />
           <Route path="verify/email" element={<VerifyEmailPage />} />
           <Route path="unsubscribe/:token" element={<UnsubscribePage />} />
           <Route path="privacy" element={<PrivacyPage />} />

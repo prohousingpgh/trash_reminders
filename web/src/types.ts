@@ -52,3 +52,8 @@ export type ServiceAlert = {
   active: number
   created_at: string
 }
+
+export type AccountSession = {
+  authenticated: boolean
+  email?: string
+}
