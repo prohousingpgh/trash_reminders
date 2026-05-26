@@ -37,9 +37,17 @@ fly apps create trash-reminders
 fly volumes create trash_reminders_data --region iad --size 1 -a trash-reminders
 ```
 
-### 4. Fly secrets
+### 4. Fly secrets (required for email + Mailchimp)
 
-Set secrets once (replace values; never commit these):
+**The app deploys without secrets, but email and newsletter signup will not work until you set them.**
+
+List current secrets (names only):
+
+```powershell
+fly secrets list -a trash-reminders
+```
+
+If empty, copy values from your local `.env` and run:
 
 ```powershell
 fly secrets set -a trash-reminders `
@@ -50,12 +58,20 @@ fly secrets set -a trash-reminders `
   AWS_SECRET_ACCESS_KEY=... `
   SES_FROM_EMAIL=reminders@alerts.prohousingpgh.org `
   MAILCHIMP_API_KEY=... `
-  MAILCHIMP_AUDIENCE_ID=9192ba01cf `
+  MAILCHIMP_AUDIENCE_ID=... `
   MAILCHIMP_DEFAULT_MUNICIPALITY="City of Pittsburgh" `
   MAILCHIMP_MERGE_MUNICIPALITY=MUNI `
   MAILCHIMP_MERGE_NEIGHBORHOOD=HOOD `
   MAILCHIMP_MERGE_ZIP=ZIP
 ```
+
+Fly restarts machines after setting secrets. Confirm:
+
+```powershell
+curl https://trash-reminders.fly.dev/api/health
+```
+
+Expect `"email_configured": true` and `"mailchimp": { "configured": true, ... }`.
 
 Optional (SMS, when ready):
 
